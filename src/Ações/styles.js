@@ -6,10 +6,4 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.backgroundBase,
   },
-  circle: {
-    color: theme.colors.backgroundBase,
-    width: 56,
-    height: 56,
-    borderRadius: 50,
-  },
 });
