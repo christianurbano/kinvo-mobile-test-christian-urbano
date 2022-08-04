@@ -12,6 +12,10 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
   },
+  heart: {
+    height: 1,
+    width: 24,
+  },
   header: {
     color: theme.colors.title,
     fontFamily: theme.fonts.fontHeader,

@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
-import { styles } from "./style";
-import icon from "../../../assets/Icon/heart.svg";
+import { View, Text, TouchableOpacity } from "react-native";
 
-export default function StocksItem({
-  name,
-  ticker,
-  profitability,
-  minimumValue,
-}) {
-  // [like.setLike] = useState({ icon });
+import { styles } from "./style";
+import IconHeart from "../../../assets/Icon/heart.svg";
+import IconHeartWhite from "../../../assets/Icon/heartwhite.svg";
+
+const StocksItem = (props) => {
+  const {
+    item: { name, ticker, profitability, minimumValue, favorited },
+    onFavorited,
+  } = props;
+
+  const onHeartClick = () => {
+    onFavorited(!favorited, props.item);
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>{name}</Text>
+      <View style={styles.row}>
+        <Text style={styles.header}>{name}</Text>
+        <TouchableOpacity onPress={onHeartClick} style={styles.heart}>
+          {favorited ? <IconHeart /> : <IconHeartWhite />}
+        </TouchableOpacity>
+      </View>
       <Text style={styles.title}>{ticker}</Text>
-
       <View style={styles.line} />
       <View style={styles.row}>
         <Text style={styles.subTitle}>Valor mínimo:</Text>
@@ -28,4 +36,6 @@ export default function StocksItem({
       </View>
     </View>
   );
-}
+};
+
+export default StocksItem;
